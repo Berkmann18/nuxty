@@ -1,35 +1,43 @@
 <template>
   <section class="container">
     <div>
-      <logo />
       <h1 class="title">
         nuxty
       </h1>
       <h2 class="subtitle">
         My CMSed Static Nuxt Project
       </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
+      <div>
+        <ul>
+          <li
+            v-for="(post, index) in allPosts"
+            :key="index"
+          >
+            <h2>
+              <nuxt-link :to="`/blog/${post.slug}`">
+                {{ post.title }}
+              </nuxt-link>
+            </h2>
+            <p>{{ post.text }}</p>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import gql from 'graphql-tag'
 
 export default {
-  components: {
-    Logo
+  apollo: {
+    allPosts: gql`{
+      allPosts {
+        title
+        text
+        slug
+      }
+    }`
   }
 }
 </script>

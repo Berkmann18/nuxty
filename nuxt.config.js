@@ -21,7 +21,7 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#0cf' },
 
   /*
   ** Global CSS
@@ -39,6 +39,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/apollo'
   ],
 
   /*
@@ -50,5 +51,14 @@ export default {
     */
     extend(config, ctx) {
     }
-  }
+  },
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'https://graphql.datocms.com',
+        getAuth: () => 'Bearer f65dc0c42001b12657e2d8ccd3ef98'
+      },
+    }
+  },
 }
