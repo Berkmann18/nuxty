@@ -18,12 +18,12 @@ export default {
           text
         }
       }`,
-      prefetch({ route }) {
+      prefetch ({ route }) {
         return {
           slug: route.params.slug
         }
       },
-      variables() {
+      variables () {
         return {
           slug: this.$route.params.slug
         }

@@ -49,7 +49,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
+    extend (config, ctx) {
     }
   },
 
@@ -58,7 +58,11 @@ export default {
       default: {
         httpEndpoint: 'https://graphql.datocms.com',
         getAuth: () => 'Bearer f65dc0c42001b12657e2d8ccd3ef98'
-      },
+      }
     }
   },
+
+  env: {
+    functions: config.env === 'production' ? `${config.url}/.netlify/functions` : 'http://localhost:9000'
+  }
 }

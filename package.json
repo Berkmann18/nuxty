@@ -5,15 +5,26 @@
   "author": "Berkmann18",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
+    "lint": "eslint --ext .js,.vue . -c .eslintrc.js --fix",
+    "dev": "NODE_ENV=development nuxt && npm run functions:serve",
+    "build": "NODE_ENV=production nuxt build && npm run functions:build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "test": "jest"
+    "test": "jest",
+    "functions:serve": "netlify-lambda serve lambda",
+    "functions:build": "netlify-lambda build lambda"
   },
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.0-rc4",
+    "@sendgrid/mail": "^6.3.1",
+    "@vue/eslint-config-standard": "^4.0.0",
     "cross-env": "^5.2.0",
+    "eslint": "^5.15.1",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-vue": "^5.2.2",
+    "eslint-plugin-you-dont-need-lodash-underscore": "^6.4.0",
+    "netlify-lambda": "^1.4.2",
     "nuxt": "^2.4.0"
   },
   "devDependencies": {
